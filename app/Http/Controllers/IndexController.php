@@ -6,28 +6,35 @@ use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
-    // Method untuk route '/'
+
     public function index()
     {
-        // Mengarahkan ke view utama
-        return view('index'); // Pastikan ada file 'index.blade.php' di folder resources/views
+        return view('index');
     }
 
     public function profile()
     {
-        // Mengarahkan ke view utama
-        return view('profile'); // Pastikan ada file 'profile.blade.php' di folder resources/views
+        return view('profile');
     }
 
-    // Method untuk route '/submit'
-    public function submit(Request $request)
+    public function register(Request $request)
     {
-        // Proses data form jika diperlukan
-        // Contoh:
-        // $data = $request->all();
-        // dd($data); // Untuk debug data yang diterima
 
         // Redirect atau tampilkan hasil
-        return view('submit'); // Pastikan ada file 'submit.blade.php' di folder resources/views
+        return view('register');
+    }
+
+    public function race(Request $request)
+    {
+
+        // Redirect atau tampilkan hasil
+        return view('race');
+    }
+
+    public function runners(Request $request)
+    {
+
+        // Redirect atau tampilkan hasil
+        return view('runners');
     }
 }
