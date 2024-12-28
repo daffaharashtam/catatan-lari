@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-@section('title', 'Race')
+@section('title', 'Edit Profile')
 
 @section('content')
 
@@ -12,28 +12,8 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-6 col-md-push-3">
-                                <div class="text-center mb-60"><a href="#" class=""><img alt=""
-                                            src="{{ asset('templates/images/logo-wide.png') }}"></a></div>
                                 <form name="reg-form" class="register-form form-transparent" method="post">
-                                    <div class="icon-box mb-0 p-0">
-                                        <a href="#"
-                                            class="icon icon-bordered icon-rounded icon-sm pull-left mb-0 mr-10">
-                                            <i class="pe-7s-users"></i>
-                                        </a>
-                                        <h4 class="text-gray pt-10 mt-0 mb-30">Runner Registration</h4>
-                                    </div>
                                     <hr>
-                                    <p class="text-gray">Halo, Pelari Hebat!
-                                        <br>
-                                        <br>
-                                        Terima kasih sudah mengunjungi website kami. Kami sangat senang menyambut Anda untuk
-                                        bergabung dalam komunitas penuh semangat ini.
-                                        <br>
-                                        <br>
-                                        Silakan isi formulir di bawah ini dengan data yang benar dan lengkap. Kami tidak
-                                        sabar untuk melihat langkah-langkah hebat Anda. Selamat bergabung dan sampai jumpa
-                                        di garis start!
-                                    </p>
                                     <div class="row">
                                         <div class="form-group col-md-12">
                                             <label for="form_runner_id">Runner ID / Runner Number</label>
@@ -49,9 +29,7 @@
                                         <div class="form-group col-md-12">
                                             <label for="form_name">Name</label>
                                             <input id="form_name" name="name" class="form-control" type="text">
-                                            <small>The name written above will be used for submission verification. Please
-                                                fill with the name which you use for race registration.
-                                            </small>
+                                            <small>The name written above will be used for submission verification.</small>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -59,13 +37,6 @@
                                             <label for="form_email">Email</label>
                                             <input id="form_email" name="email" class="form-control" type="email">
                                             <small>Please enter a valid email address.</small>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group col-md-12">
-                                            <label for="form_password">Password</label>
-                                            <input id="form_password" name="password" class="form-control" type="password">
-                                            <small>Password must be at least 8 characters long.</small>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -109,27 +80,49 @@
                                             <small>Maximum upload file size: 12 MB</small>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="form-group col-md-12">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="form_terms"
-                                                    name="terms">
-                                                <label class="form-check-label" for="form_terms">
-                                                    I have read and agree to the terms and conditions
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
                                     <div class="form-group">
-                                        <button class="btn btn-dark btn-lg btn-block mt-15" type="submit">Register
-                                            Now</button>
+                                        <button class="btn btn-dark btn-lg btn-block mt-15" type="submit">Edit
+                                            Profile</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
+                        <div class="row mt-4">
+                            <div class="col-md-6 col-md-push-3">
+                                <form name="change-password-form" class="register-form form-transparent" method="post">
+                                    <hr>
+                                    <div class="row">
+                                        <div class="form-group col-md-12">
+                                            <label for="current_password">Current Password</label>
+                                            <input id="current_password" name="current_password" class="form-control"
+                                                type="password">
+                                            <small>Enter your current password.</small>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-md-12">
+                                            <label for="new_password">New Password</label>
+                                            <input id="new_password" name="new_password" class="form-control"
+                                                type="password">
+                                            <small>Password must be at least 8 characters long.</small>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-md-12">
+                                            <label for="confirm_password">Confirm New Password</label>
+                                            <input id="confirm_password" name="confirm_password" class="form-control"
+                                                type="password">
+                                            <small>Re-enter your new password for confirmation.</small>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btn btn-dark btn-lg btn-block mt-15" type="submit">Change
+                                            Password</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,13 +19,14 @@
     <link href="{{ asset('templates/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('templates/css/jquery-ui.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('templates/css/animate.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('templates/css/css-plugin-collections.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('templates/css/css-plugin-collections.css') }}" rel="stylesheet" />
     <!-- CSS | menuzord megamenu skins -->
-    <link id="menuzord-menu-skins" href="{{ asset('templates/css/menuzord-skins/menuzord-boxed.css') }}" rel="stylesheet"/>
+    <link id="menuzord-menu-skins" href="{{ asset('templates/css/menuzord-skins/menuzord-boxed.css') }}"
+        rel="stylesheet" />
     <!-- CSS | Main style file -->
     <link href="{{ asset('templates/css/style-main.css') }}" rel="stylesheet" type="text/css">
     <!-- CSS | Theme Color -->
-    <link href="{{ asset('templates/css/colors/theme-skin-lemon.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('templates/css/colors/theme-skin-orange.css') }}" rel="stylesheet" type="text/css">
     <!-- CSS | Preloader Styles -->
     <link href="{{ asset('templates/css/preloader.css') }}" rel="stylesheet" type="text/css">
     <!-- CSS | Custom Margin Padding Collection -->
@@ -34,6 +36,9 @@
     <!-- CSS | Style css. This is the file where you can place your own custom css code. Just uncomment it and use it. -->
     <!-- <link href="{{ asset('templates/css/style.css') }}" rel="stylesheet" type="text/css"> -->
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> --}}
+
 
 
     <!-- External JavaScripts -->
@@ -42,29 +47,34 @@
     <script src="{{ asset('templates/js/bootstrap.min.js') }}"></script>
     <!-- JS | jQuery Plugin Collection for this theme -->
     <script src="{{ asset('templates/js/jquery-plugin-collection.js') }}"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> --}}
 
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 
     @stack('styles')
 </head>
+
 <body>
-<div id="wrapper">
-    <header>
-        <!-- Navbar or header content -->
-        @include('partials.navbar')
-    </header>
+    <div id="wrapper">
+        <header>
+            <!-- Navbar or header content -->
+            @include('partials.navbar')
+        </header>
 
-    <main>
-        @yield('content')
-    </main>
+        <main>
+            @yield('content')
+        </main>
 
-    <footer>
-        <!-- Footer content -->
-        @include('partials.footer')
-    </footer>
-</div>
+        <footer>
+            <!-- Footer content -->
+            @include('partials.footer')
+        </footer>
+    </div>
     <!-- Scripts -->
     @stack('scripts')
 
 </body>
+
 </html>

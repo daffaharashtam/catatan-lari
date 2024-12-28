@@ -17,6 +17,11 @@ class IndexController extends Controller
         return view('profile');
     }
 
+    public function editProfile()
+    {
+        return view('edit-profile');
+    }
+
     public function register(Request $request)
     {
 

@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-@section('title', 'Race')
+@section('title', 'Register')
 
 @section('content')
 
@@ -12,8 +12,6 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-6 col-md-push-3">
-                                <div class="text-center mb-60"><a href="#" class=""><img alt=""
-                                            src="{{ asset('templates/images/logo-wide.png') }}"></a></div>
                                 <form name="reg-form" class="register-form form-transparent" method="post">
                                     <div class="icon-box mb-0 p-0">
                                         <a href="#"

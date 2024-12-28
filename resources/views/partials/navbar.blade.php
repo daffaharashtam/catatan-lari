@@ -1,3 +1,14 @@
+ <style>
+     .avatar {
+         width: 30px;
+         height: 30px;
+         border-radius: 50%;
+         object-fit: cover;
+         vertical-align: middle;
+         margin-right: 10px;
+     }
+ </style>
+
  <!-- Header -->
  <header id="header" class="header">
      <div class="header-top sm-text-center bg-theme-colored">
@@ -51,15 +62,21 @@
                              <ul class="menuzord-menu">
                                  <li class="{{ request()->routeIs('index') ? 'active' : '' }}"><a
                                          href="{{ route('index') }}">Home</a></li>
-                                 <li class="{{ request()->routeIs('profile') ? 'active' : '' }}"><a
-                                         href="{{ route('profile') }}">Profile</a></li>
-                                 <li class="{{ request()->routeIs('register') ? 'active' : '' }}"><a
-                                         href="{{ route('register') }}">Register</a></li>
-                                 <li class="{{ request()->routeIs('race') ? 'active' : '' }}"><a
-                                         href="{{ route('race') }}">Race</a></li>
-                                 <li class="{{ request()->routeIs('runners') ? 'active' : '' }}"><a
-                                         href="{{ route('runners') }}">Runners</a></li>
-                                 <li><a href="#">About</a></li>
+                                 {{-- <li class="{{ request()->routeIs('profile.show') ? 'active' : '' }}"><a
+                                         href="{{ route('profile.show') }}">Profile</a></li> --}}
+                                 <li class="{{ request()->routeIs('register.form') ? 'active' : '' }}"><a
+                                         href="{{ route('register.form') }}">Register</a></li>
+                                 <li class="{{ request()->routeIs('races.search') ? 'active' : '' }}"><a
+                                         href="{{ route('races.search') }}">Race</a></li>
+                                 <li class="{{ request()->routeIs('runners.search') ? 'active' : '' }}"><a
+                                         href="{{ route('runners.search') }}">Runners</a></li>
+                                 <li><a href="#">Hi, {Nama Member}</a>
+                                     <ul class="dropdown">
+                                         <li><a href="{{ route('profile.edit') }}">Account Settings</a></li>
+                                         <li><a href="{{ route('profile.show') }}">Profile Overview</a></li>
+                                         <li><a href="page-classes-style2.html">Logout</a></li>
+                                     </ul>
+                                 </li>
                              </ul>
                          </div>
                      </div>
