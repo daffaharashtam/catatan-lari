@@ -10,6 +10,8 @@ use App\Http\Controllers\RaceController;
 use App\Http\Controllers\HeadToHeadController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\EventController;
+
 // Home
 Route::get('/', [HomeController::class, 'index'])->name('index');
 
@@ -41,3 +43,11 @@ Route::get('/runners/show', [RunnerController::class, 'show'])->name('runners.sh
 Route::get('/head-to-head', [HeadToHeadController::class, 'show'])->name('headtohead.show');
 Route::post('/head-to-head', [HeadToHeadController::class, 'compare'])->name('headtohead.compare');
 
+
+Route::prefix('events')->group(function () {
+    Route::get('/', [EventController::class, 'index'])->name('events.list');
+    Route::post('/store', [EventController::class, 'store'])->name('events.store');
+    Route::get('/edit/{id}', [EventController::class, 'edit'])->name('events.edit');
+    Route::post('/update/{id}', [EventController::class, 'update'])->name('events.update');
+    Route::delete('/delete/{id}', [EventController::class, 'destroy'])->name('events.destroy');
+});
