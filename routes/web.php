@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RunnerController;
 use App\Http\Controllers\RaceController;
 use App\Http\Controllers\HeadToHeadController;
+use App\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\EventController;
@@ -15,9 +16,51 @@ use App\Http\Controllers\EventController;
 // Home
 Route::get('/', [HomeController::class, 'index'])->name('index');
 
-// Register
-Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register.form');
-Route::post('/register', [AuthController::class, 'register'])->name('register.submit');
+
+// Authentication
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/register-post', [AuthController::class, 'registerStore'])->name('registerrunner');
+
+
+// Settings
+
+    // Announcements
+    Route::get('/announcement', [SettingsController::class, 'Announcement_Listing'])->name('announcement_listing');
+
+    Route::get('/announcement/Add', [SettingsController::class, 'Announcement_Add'])->name('announcement_add');
+    Route::post('/announcement', [SettingsController::class, 'Announcement_Store'])->name('announcement_store');
+
+    Route::get('/announcement/Edit/{id}', [SettingsController::class, 'Announcement_Edit'])->name('announcement_edit');
+    Route::put('/announcement', [SettingsController::class, 'Announcement_Update'])->name('announcement_update');
+
+    Route::delete('/announcement/{id}', [SettingsController::class, 'Announcement_Destroy'])->name('announcement_destroy');
+
+
+    // RaceInfo
+    Route::get('/RaceInfo', [SettingsController::class, 'race_Listing'])->name('race_listing');
+
+    Route::get('/RaceInfo/Add', [SettingsController::class, 'race_Add'])->name('race_add');
+    Route::post('/RaceInfo', [SettingsController::class, 'race_Store'])->name('race_store');
+
+    Route::get('/RaceInfo/Edit/{id}', [SettingsController::class, 'race_Edit'])->name('race_edit');
+    Route::put('/RaceInfo', [SettingsController::class, 'race_update'])->name('race_update');
+
+    Route::delete('/RaceInfo/{id}', [SettingsController::class, 'race_Destroy'])->name('race_destroy');
+
+
+    // Category
+    Route::get('/category', [SettingsController::class, 'category_Listing'])->name('category_listing');
+
+    Route::get('/category/Add', [SettingsController::class, 'category_Add'])->name('category_add');
+    Route::post('/category', [SettingsController::class, 'category_Store'])->name('category_store');
+
+    Route::get('/category/Edit/{id}', [SettingsController::class, 'category_Edit'])->name('category_edit');
+    Route::put('/category', [SettingsController::class, 'category_update'])->name('category_update');
+
+    Route::delete('/category/{id}', [SettingsController::class, 'category_Destroy'])->name('category_destroy');
 
 // Profile
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');

@@ -12,7 +12,9 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-6 col-md-push-3">
-                                <form name="reg-form" class="register-form form-transparent" method="post">
+                                <form name="reg-form" class="register-form form-transparent" enctype="multipart/form-data"
+                                    method="post" action="{{ route('registerrunner') }}">
+                                    @csrf
                                     <div class="icon-box mb-0 p-0">
                                         <a href="#"
                                             class="icon icon-bordered icon-rounded icon-sm pull-left mb-0 mr-10">
@@ -35,7 +37,7 @@
                                     <div class="row">
                                         <div class="form-group col-md-12">
                                             <label for="form_runner_id">Runner ID / Runner Number</label>
-                                            <input id="form_runner_id" name="runner_id" class="form-control" type="text"
+                                            <input id="form_runner_id" name="runner_no" class="form-control" type="text"
                                                 pattern="(?=.*[A-Z])(?=.*[0-9])[A-Z0-9]{6}" maxlength="6"
                                                 oninput="this.value = this.value.toUpperCase()">
                                             <small>Enter a 6-character Runner ID (e.g., RUN001). Use uppercase letters and
@@ -69,7 +71,7 @@
                                     <div class="row">
                                         <div class="form-group col-md-4">
                                             <label for="form_dob">Date of Birth</label>
-                                            <input id="form_dob" name="date_of_birth" class="form-control" type="date">
+                                            <input id="form_dob" name="birthdate" class="form-control" type="date">
                                             <small>Enter your birth date.</small>
                                         </div>
                                         <div class="form-group col-md-8">
@@ -85,7 +87,12 @@
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label for="form_city">City</label>
-                                            <input id="form_city" name="city" class="form-control" type="text">
+                                            <select id="form_city" name="city" class="form-control">
+                                                <option value="" disabled selected>Select City</option>
+                                                @foreach ($items as $item)
+                                                    <option value="{{ $item->city_name }}">{{ $item->city_name }}</option>
+                                                @endforeach
+                                            </select>
                                             <small>Enter the city where you currently live.</small>
                                         </div>
                                         <div class="form-group col-md-6">
@@ -102,9 +109,13 @@
                                         <div class="form-group col-md-12">
                                             <label for="form_attachment">Profile Picture</label>
                                             <small>(Ratio 1:1)</small>
-                                            <input id="form_attachment" name="profile_picture" class="file" type="file"
+                                            <input id="form_attachment" name="pic_profile" class="file" type="file"
                                                 data-show-upload="false" data-show-caption="true">
                                             <small>Maximum upload file size: 12 MB</small>
+                                            <div class="form-group">
+                                                <img id="preview_image" src="#" alt="Preview"
+                                                    style="max-width: 200px; display: none;" />
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -133,5 +144,23 @@
             </div>
         </section>
     </div>
+
+
+    <script>
+        document.getElementById('form_attachment').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    const preview = document.getElementById('preview_image');
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                }
+
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 
 @endsection

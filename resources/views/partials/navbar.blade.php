@@ -63,21 +63,37 @@
                                  <!-- Menu Member -->
                                  <li class="{{ request()->routeIs('index') ? 'active' : '' }}"><a
                                          href="{{ route('index') }}">Home</a></li>
-                                 <li class="{{ request()->routeIs('profile.show') ? 'active' : '' }}"><a
-                                         href="{{ route('profile.show') }}">Profile</a></li>
-                                 <li class="{{ request()->routeIs('register.form') ? 'active' : '' }}"><a
-                                         href="{{ route('register.form') }}">Register</a></li>
-                                 <li class="{{ request()->routeIs('races.search') ? 'active' : '' }}"><a
-                                         href="{{ route('races.search') }}">Race</a></li>
-                                 <li class="{{ request()->routeIs('runners.search') ? 'active' : '' }}"><a
-                                         href="{{ route('runners.search') }}">Runners</a></li>
-                                 <li><a href="#">Hi, {Nama Member}</a>
-                                     <ul class="dropdown">
-                                         <li><a href="{{ route('profile.edit') }}">Account Settings</a></li>
-                                         <li><a href="{{ route('profile.show') }}">Profile Overview</a></li>
-                                         <li><a href="page-classes-style2.html">Logout</a></li>
-                                     </ul>
-                                 </li>
+                                 @auth
+                                     @if (Auth::user()->user_type === 9)
+                                         <li><a href="#">Settings</a>
+                                             <ul class="dropdown">
+                                                 <li><a href="{{ route('announcement_listing') }}">Announcement</a></li>
+                                                 <li><a href="{{ route('race_listing') }}">Races</a></li>
+                                                 <li><a href="{{ route('category_listing') }}">Category</a></li>
+                                             </ul>
+                                         </li>
+                                     @endif
+                                     <li class="{{ request()->routeIs('profile.show') ? 'active' : '' }}"><a
+                                             href="{{ route('profile.show') }}">Profile</a></li>
+
+                                     <li><a href="#">Hi, {{ Auth::user()->name }}</a>
+                                         <ul class="dropdown">
+                                             <li><a href="{{ route('profile.edit') }}">Account Settings</a></li>
+                                             <li><a href="{{ route('profile.show') }}">Profile Overview</a></li>
+                                             <li><a href="{{ route('logout') }}">Logout</a></li>
+                                         </ul>
+                                     </li>
+                                 @endauth
+                                 @guest
+                                     <li class="{{ request()->routeIs('register') ? 'active' : '' }}"><a
+                                             href="{{ route('register') }}">Register</a></li>
+                                     <li class="{{ request()->routeIs('races.search') ? 'active' : '' }}"><a
+                                             href="{{ route('races.search') }}">Race</a></li>
+                                     <li class="{{ request()->routeIs('runners.search') ? 'active' : '' }}"><a
+                                             href="{{ route('runners.search') }}">Runners</a></li>
+                                 @endguest
+
+
                                  <!-- Menu Admin -->
                                  {{-- <li class="{{ request()->routeIs('user_management.list') ? 'active' : '' }}">
                                      <a href="{{ route('user_management.list') }}">User Management</a>
@@ -88,21 +104,11 @@
                                  <li class="{{ request()->routeIs('data_race.list') ? 'active' : '' }}">
                                      <a href="{{ route('data_race.list') }}">Data Race</a>
                                  </li> --}}
-                                 <li class="{{ request()->routeIs('events.list') ? 'active' : '' }}">
-                                     <a href="{{ route('events.list') }}">Event</a>
-                                 </li>
-                                 <li>
-                                     <a href="#">Hi, SuperAdmin</a>
-                                     <ul class="dropdown">
-                                         <li><a href="{{ route('profile.edit') }}">Account Settings</a></li>
-                                         <li><a href="{{ route('profile.show') }}">Profile Overview</a></li>
-                                         {{-- <li><a href="{{ route('logout') }}">Logout</a></li>
+
+
+
+
                              </ul>
-                             </li> --}}
-
-
-
-                                     </ul>
                          </div>
                      </div>
                  </div>
