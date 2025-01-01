@@ -22,10 +22,10 @@
             <div class="form-group">
                 <label for="category">Status</label>
                 <select name="category" class="form-control" required>
-                    <option value="Marathon">Marathon</option>
+                    <option value="5 K">5 K</option>
+                    <option value="10 K">10 K </option>
                     <option value="Half Marathon">Half Marathon</option>
-                    <option value="10 K">10 </option>
-                    <option value="5 K">Half Marathon</option>
+                    <option value="Marathon">Marathon</option>
                 </select>
             </div>
 

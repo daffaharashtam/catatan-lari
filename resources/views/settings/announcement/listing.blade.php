@@ -5,8 +5,10 @@
 @section('content')
     <div class="container">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1>Announcements</h1>
-            <a href="{{ route('announcement_add') }}" class="btn btn-primary">Add Announcement</a>
+            <div class="p-4 mt-4 mb-4" style="background-color: #FF5722;">
+                <h2 class="text-white" style="font-weight: bold; font-size: 1.2rem;">Announcement</h2>
+            </div>
+            <a href="{{ route('announcement_add') }}" class="btn btn-primary">+ Add Announcement</a>
         </div>
 
         @if (session('success'))

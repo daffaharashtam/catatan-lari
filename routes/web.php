@@ -62,6 +62,18 @@ Route::post('/register-post', [AuthController::class, 'registerStore'])->name('r
 
     Route::delete('/category/{id}', [SettingsController::class, 'category_Destroy'])->name('category_destroy');
 
+    // Users
+    Route::get('/users', [SettingsController::class, 'users_Listing'])->name('users_listing');
+
+    Route::get('/users/Add', [SettingsController::class, 'users_Add'])->name('users_add');
+    Route::post('/users', [SettingsController::class, 'users_Store'])->name('users_store');
+
+    Route::get('/users/Edit/{id}', [SettingsController::class, 'users_Edit'])->name('users_edit');
+    Route::put('/users', [SettingsController::class, 'users_Update'])->name('users_update');
+
+    Route::delete('/users/{id}', [SettingsController::class, 'users_Destroy'])->name('users_destroy');
+
+
 // Profile
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');

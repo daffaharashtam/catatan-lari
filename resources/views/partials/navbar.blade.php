@@ -58,7 +58,8 @@
                      <div class="col-md-12">
                          <div id="menuzord-right" class="menuzord orange no-bg"> <a
                                  class="menuzord-brand stylish-header pull-left flip" href="javascript:void(0)"><img
-                                     src="{{ asset('templates/images/logo-wide-white.png') }}" alt=""></a>
+                                     src="{{ asset('catatanlari/catatanlari-logo.png') }}" alt="Catatan Lari Logo"
+                                     style="height: 40px; width: auto;"></a>
                              <ul class="menuzord-menu">
                                  <!-- Menu Member -->
                                  <li class="{{ request()->routeIs('index') ? 'active' : '' }}"><a
@@ -67,9 +68,10 @@
                                      @if (Auth::user()->user_type === 9)
                                          <li><a href="#">Settings</a>
                                              <ul class="dropdown">
+                                                 <li><a href="{{ route('users_listing') }}">User Management</a></li>
                                                  <li><a href="{{ route('announcement_listing') }}">Announcement</a></li>
                                                  <li><a href="{{ route('race_listing') }}">Races</a></li>
-                                                 <li><a href="{{ route('category_listing') }}">Category</a></li>
+                                                 <li><a href="{{ route('category_listing') }}">Category Race</a></li>
                                              </ul>
                                          </li>
                                      @endif

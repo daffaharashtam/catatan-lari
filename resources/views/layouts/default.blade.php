@@ -58,10 +58,39 @@
     {{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> --}}
 
 
+
+
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 
     @stack('styles')
+
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            /* Contoh */
+        }
+
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        a,
+        span,
+        div,
+        li,
+        button,
+        input,
+        textarea {
+            font-family: inherit;
+            /* Gunakan bawaan dari body */
+        }
+    </style>
 </head>
 
 <body>

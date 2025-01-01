@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 
 class SettingsController extends Controller
 {
@@ -239,9 +240,7 @@ class SettingsController extends Controller
     }
 
 
-// Category
-
-
+    // Category
     public function category_Listing()
     {
         $categories = DB::table('category')
@@ -307,6 +306,77 @@ class SettingsController extends Controller
         return redirect('/category')->with('success', 'category berhasil didelete!');
     }
 
+     // Listing Users
+     public function users_Listing()
+     {
+         $users = DB::table('users')->get()->toArray();
+         return view('settings.users.listing', compact('users'));
+     }
 
+     // Add User Form
+     public function users_Add()
+     {
+         return view('settings.users.add');
+     }
+
+     // Store New User
+     public function users_Store(Request $request)
+     {
+         $userData = [
+             'name' => $request->name,
+             'email' => $request->email,
+             'password' => Hash::make($request->password), // Password is hashed
+             'user_type' => $request->user_type,
+             'created_at' => now(),
+             'updated_at' => now(),
+         ];
+
+         DB::table('users')->insert($userData);
+
+         return redirect('/users')->with('success', 'User berhasil dibuat!');
+     }
+
+     // Edit User Form
+     public function users_Edit($id)
+     {
+         $user = DB::table('users')
+             ->where('id', $id)
+             ->get()
+             ->toArray()[0];
+
+         return view('settings.users.edit', compact('user'));
+     }
+
+     // Update User
+     public function users_Update(Request $request)
+     {
+         $id = $request->id;
+
+         $userData = [
+             'name' => $request->name,
+             'email' => $request->email,
+             'user_type' => $request->user_type,
+             'created_at' => now(),
+             'updated_at' => now(),
+         ];
+
+         if ($request->password) {
+             $userData['password'] = Hash::make($request->password); // Update password only if provided
+         }
+
+         DB::table('users')
+             ->where('id', $id)
+             ->update($userData);
+
+         return redirect('/users')->with('success', 'User berhasil diupdate!');
+     }
+
+     // Delete User
+     public function users_Destroy($id)
+     {
+         DB::table('users')->where('id', $id)->delete();
+
+         return redirect('/users')->with('success', 'User berhasil didelete!');
+     }
 
 }

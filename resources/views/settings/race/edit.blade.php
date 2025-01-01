@@ -24,11 +24,11 @@
             <div class="form-group">
                 <label for="category">category</label>
                 <select name="category" class="form-control" required>
-                    <option value="Marathon" {{ $races->category == 'Marathon' ? 'selected' : '' }}>Marathon</option>
-                    <option value="Half Marathon" {{ $races->category == 'Half Marathon' ? 'selected' : '' }}>Half Marathon
-                    </option>
-                    <option value="10 K" {{ $races->category == '10 K' ? 'selected' : '' }}>10 K</option>
                     <option value="5 K" {{ $races->category == '5 K' ? 'selected' : '' }}>5 K</option>
+                    <option value="10 K" {{ $races->category == '10 K' ? 'selected' : '' }}>10 K</option>
+                    <option value="Half Marathon" {{ $races->category == 'Half Marathon' ? 'selected' : '' }}>Half Marathon
+                    <option value="Marathon" {{ $races->category == 'Marathon' ? 'selected' : '' }}>Marathon</option>
+                    </option>
                 </select>
             </div>
 
